@@ -1,11 +1,14 @@
 plugins {
     kotlin("jvm")
-    `maven-publish`
     kotlin("plugin.serialization") version "2.2.0"
+    signing
     id("com.vanniktech.maven.publish")
 }
-val moduleVersion: String = rootProject.file("${project.name}/version.txt").readText().trim()
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()

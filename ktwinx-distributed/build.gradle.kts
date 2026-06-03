@@ -4,8 +4,10 @@ plugins {
     kotlin("plugin.serialization") version "2.2.0"
 }
 
-val moduleVersion: String = rootProject.file("${project.name}/version.txt").readText().trim()
-
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()

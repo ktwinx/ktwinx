@@ -3,7 +3,10 @@ plugins {
     `maven-publish`
 }
 
-val moduleVersion: String = rootProject.file("${project.name}/version.txt").readText().trim()
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()
