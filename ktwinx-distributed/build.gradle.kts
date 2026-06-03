@@ -1,12 +1,19 @@
 plugins {
     kotlin("jvm")
-    `maven-publish`
     kotlin("plugin.serialization") version "2.2.0"
+    id("com.vanniktech.maven.publish")
 }
 
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+mavenPublishing {
+    pom {
+        name.set("ktwinx-distributed")
+        description.set("Utilities for KTwinX distributed applications.")
+    }
 }
 
 repositories {

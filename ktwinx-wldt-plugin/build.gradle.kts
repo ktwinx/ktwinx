@@ -1,11 +1,18 @@
 plugins {
     kotlin("jvm")
-    `maven-publish`
+    id("com.vanniktech.maven.publish")
 }
 
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+mavenPublishing {
+    pom {
+        name.set("ktwinx-wldt-plugin")
+        description.set("Java Runtime for KTwinX Digital Twins.")
+    }
 }
 
 repositories {
