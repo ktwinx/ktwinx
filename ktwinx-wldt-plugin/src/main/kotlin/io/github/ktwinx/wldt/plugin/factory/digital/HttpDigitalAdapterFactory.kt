@@ -7,24 +7,24 @@ import it.wldt.adapter.http.digital.adapter.HttpDigitalAdapter
 import it.wldt.adapter.http.digital.adapter.HttpDigitalAdapterConfiguration
 import it.wldt.core.engine.DigitalTwin
 
-class HttpDigitalAdapterFactory : io.github.ktwinx.wldt.plugin.factory.digital.DigitalAdapterFactory {
+class HttpDigitalAdapterFactory : DigitalAdapterFactory {
     override val interfaceType = DigitalInterfaceType.HTTP
 
     override fun validate(dI: DigitalInterface): Result<Unit> = runCatching {
         dI.optionalString("host",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.HttpDigitalAdapterFactory.Companion.DEFAULT_HOST
+            DEFAULT_HOST
         )
         dI.optionalInt("port",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.HttpDigitalAdapterFactory.Companion.DEFAULT_PORT
+            DEFAULT_PORT
         )
     }
 
     override fun create(dI: DigitalInterface, dt: DigitalTwin, models: List<Model>): HttpDigitalAdapter {
         val host = dI.optionalString("host",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.HttpDigitalAdapterFactory.Companion.DEFAULT_HOST
+            DEFAULT_HOST
         )
         val port = dI.optionalInt("port",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.HttpDigitalAdapterFactory.Companion.DEFAULT_PORT
+            DEFAULT_PORT
         )
         val httpConfig = HttpDigitalAdapterConfiguration(dI.id.toString(), host, port)
         httpConfig.addPropertiesFilter(models.flatMap { it.properties }.map { it.id.toString() })

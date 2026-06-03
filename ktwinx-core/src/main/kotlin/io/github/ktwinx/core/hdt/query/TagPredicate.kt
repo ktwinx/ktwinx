@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * can be serialized, persisted, and later compiled to a backend query
  * (a named View stores a [TagPredicate] verbatim).
  *
- * Operates exclusively on [io.github.whdt.core.hdt.model.property.Property.tags];
+ * Operates exclusively on [io.github.ktwinx.core.hdt.model.property.Property.tags];
  * does not see `coding`, `format`, or any other Property field.
  *
  * Identity laws:

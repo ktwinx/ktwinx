@@ -11,7 +11,7 @@ class WldtApp: App {
     override fun addDt(hdt: HumanDigitalTwin): Result<String> {
         return runCatching {
             dtEngine.addDigitalTwin(
-                _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.HumanDigitalTwinFactory.fromHumanDigitalTwin(
+                fromHumanDigitalTwin(
                     hdt
                 )
             )

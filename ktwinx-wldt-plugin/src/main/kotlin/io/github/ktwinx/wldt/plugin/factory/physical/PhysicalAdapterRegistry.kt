@@ -5,8 +5,8 @@ import io.github.ktwinx.core.hdt.interfaces.physical.PhysicalInterfaceType
 import io.github.ktwinx.core.hdt.model.Model
 import it.wldt.adapter.physical.PhysicalAdapter
 
-class PhysicalAdapterRegistry(factories: List<io.github.ktwinx.wldt.plugin.factory.physical.PhysicalAdapterFactory>) {
-    private val byType: Map<PhysicalInterfaceType, io.github.ktwinx.wldt.plugin.factory.physical.PhysicalAdapterFactory> =
+class PhysicalAdapterRegistry(factories: List<PhysicalAdapterFactory>) {
+    private val byType: Map<PhysicalInterfaceType, PhysicalAdapterFactory> =
         factories.associateBy { it.interfaceType }
 
     /**

@@ -35,7 +35,6 @@ class PropertyQueryTest : FunSpec({
     )
 
     fun model(name: String, props: List<Property>): Model {
-        val mId = modelId(name)
         return Model(
             hdtId = hdtId,
             name = ModelName(name),

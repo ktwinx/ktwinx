@@ -11,24 +11,24 @@ import it.wldt.adapter.mqtt.physical.MqttPhysicalAdapterConfiguration
 
 class MqttPhysicalAdapterFactory(
     private val observationSerDe: SerDe<PropertyObservation>,
-) : io.github.ktwinx.wldt.plugin.factory.physical.PhysicalAdapterFactory {
+) : PhysicalAdapterFactory {
     override val interfaceType = PhysicalInterfaceType.MQTT
 
     override fun validate(pI: PhysicalInterface): Result<Unit> = runCatching {
         pI.optionalString("broker",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.physical.MqttPhysicalAdapterFactory.Companion.DEFAULT_BROKER
+            DEFAULT_BROKER
         )
         pI.optionalInt("port",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.physical.MqttPhysicalAdapterFactory.Companion.DEFAULT_PORT
+            DEFAULT_PORT
         )
     }
 
     override fun create(pI: PhysicalInterface, models: List<Model>): MqttPhysicalAdapter {
         val broker = pI.optionalString("broker",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.physical.MqttPhysicalAdapterFactory.Companion.DEFAULT_BROKER
+            DEFAULT_BROKER
         )
         val port = pI.optionalInt("port",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.physical.MqttPhysicalAdapterFactory.Companion.DEFAULT_PORT
+            DEFAULT_PORT
         )
         val builder = MqttPhysicalAdapterConfiguration.builder(broker, port)
         models.flatMap { it.properties }.forEach { property ->

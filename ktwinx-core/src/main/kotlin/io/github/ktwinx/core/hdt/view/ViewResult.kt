@@ -16,7 +16,7 @@ import kotlinx.serialization.encoding.Encoder
  *  - [Grouped]: a single level of grouping by tag [key]; each bucket value is itself a [ViewResult],
  *    enabling arbitrary depth.
  *
- * Bucket maps preserve insertion order (LinkedHashMap) per Issue #2's [io.github.whdt.core.hdt.query.groupByTag] contract.
+ * Bucket maps preserve insertion order (LinkedHashMap) per Issue #2's [io.github.ktwinx.core.hdt.query.groupByTag] contract.
  * The null map key represents properties missing the corresponding tag at that level.
  *
  * Serialization note: [Grouped.buckets] uses [BucketListSerializer] to serialize as a JSON array of

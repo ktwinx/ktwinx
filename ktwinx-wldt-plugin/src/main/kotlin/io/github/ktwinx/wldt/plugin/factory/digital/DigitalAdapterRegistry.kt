@@ -6,8 +6,8 @@ import io.github.ktwinx.core.hdt.model.Model
 import it.wldt.adapter.digital.DigitalAdapter
 import it.wldt.core.engine.DigitalTwin
 
-class DigitalAdapterRegistry(factories: List<io.github.ktwinx.wldt.plugin.factory.digital.DigitalAdapterFactory>) {
-    private val byType: Map<DigitalInterfaceType, io.github.ktwinx.wldt.plugin.factory.digital.DigitalAdapterFactory> =
+class DigitalAdapterRegistry(factories: List<DigitalAdapterFactory>) {
+    private val byType: Map<DigitalInterfaceType, DigitalAdapterFactory> =
         factories.associateBy { it.interfaceType }
 
     /**

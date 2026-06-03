@@ -14,9 +14,9 @@ value class ViewName(val value: String) {
 /**
  * A named, persistable query spec.
  *
- * Views are HDT-agnostic data: the same View runs against any [List]<[io.github.whdt.core.hdt.model.property.Property]>,
- * a single [io.github.whdt.core.hdt.model.Model], a single [io.github.whdt.core.hdt.HumanDigitalTwin],
- * or a [List]<[io.github.whdt.core.hdt.HumanDigitalTwin]> population. See `View.execute(...)` overloads.
+ * Views are HDT-agnostic data: the same View runs against any [List]<[io.github.ktwinx.core.hdt.model.property.Property]>,
+ * a single [io.github.ktwinx.core.hdt.model.Model], a single [io.github.ktwinx.core.hdt.HumanDigitalTwin],
+ * or a [List]<[io.github.ktwinx.core.hdt.HumanDigitalTwin]> population. See `View.execute(...)` overloads.
  *
  * Execution semantics:
  *  - If [predicate] is non-null, properties are filtered by it.

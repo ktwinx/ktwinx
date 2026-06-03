@@ -16,25 +16,25 @@ import kotlin.time.ExperimentalTime
 
 class MqttDigitalAdapterFactory(
     private val observationSerDe: SerDe<PropertyObservation>,
-) : io.github.ktwinx.wldt.plugin.factory.digital.DigitalAdapterFactory {
+) : DigitalAdapterFactory {
     override val interfaceType = DigitalInterfaceType.MQTT
 
     override fun validate(dI: DigitalInterface): Result<Unit> = runCatching {
         dI.optionalString("broker",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.MqttDigitalAdapterFactory.Companion.DEFAULT_BROKER
+            DEFAULT_BROKER
         )
         dI.optionalInt("port",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.MqttDigitalAdapterFactory.Companion.DEFAULT_PORT
+            DEFAULT_PORT
         )
     }
 
     @OptIn(ExperimentalTime::class)
     override fun create(dI: DigitalInterface, dt: DigitalTwin, models: List<Model>): MqttDigitalAdapter {
         val broker = dI.optionalString("broker",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.MqttDigitalAdapterFactory.Companion.DEFAULT_BROKER
+            DEFAULT_BROKER
         )
         val port = dI.optionalInt("port",
-            _root_ide_package_.io.github.ktwinx.wldt.plugin.factory.digital.MqttDigitalAdapterFactory.Companion.DEFAULT_PORT
+            DEFAULT_PORT
         )
         val builder = MqttDigitalAdapterConfiguration.builder(broker, port)
         val hdtId = dI.hdtId
