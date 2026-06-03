@@ -4,11 +4,6 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
 mavenPublishing {
     pom {
         name.set("ktwinx-distributed")
