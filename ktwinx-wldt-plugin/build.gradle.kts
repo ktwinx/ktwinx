@@ -1,9 +1,14 @@
 plugins {
     kotlin("jvm")
-    `maven-publish`
+    id("com.vanniktech.maven.publish")
 }
 
-val moduleVersion: String = rootProject.file("${project.name}/version.txt").readText().trim()
+mavenPublishing {
+    pom {
+        name.set("ktwinx-wldt-plugin")
+        description.set("Java Runtime for KTwinX Digital Twins.")
+    }
+}
 
 repositories {
     mavenCentral()

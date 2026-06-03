@@ -1,8 +1,9 @@
 plugins {
     kotlin("jvm") version "2.3.10"
-    `maven-publish`
-    id("com.vanniktech.maven.publish") version "0.36.0"
+    id("com.vanniktech.maven.publish") version "0.36.0" apply false
 }
+
+val projectVersion: String = rootProject.file("version.txt").readText().trim()
 
 repositories {
     mavenCentral()
@@ -10,6 +11,11 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+}
+
+allprojects {
+    group = "io.github.ktwinx"
+    version = projectVersion
 }
 
 subprojects {
@@ -28,6 +34,42 @@ subprojects {
 
         tasks.withType<Test> {
             useJUnitPlatform()
+        }
+    }
+
+    plugins.withId("com.vanniktech.maven.publish") {
+        extensions.configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
+            publishToMavenCentral()
+            signAllPublications()
+
+            coordinates(
+                groupId = "io.github.ktwinx",
+                artifactId = project.name,
+                version = projectVersion
+            )
+
+            pom {
+                url.set("https://github.com/ktwinx/ktwinx")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        distribution.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("lm98")
+                        name.set("Micelli Leonardo")
+                        email.set("leonardomicelli@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/ktwinx/ktwinx.git")
+                    developerConnection.set("scm:git:ssh://github.com/ktwinx/ktwinx.git")
+                    url.set("https://github.com/ktwinx/ktwinx")
+                }
+            }
         }
     }
 }

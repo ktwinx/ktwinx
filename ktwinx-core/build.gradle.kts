@@ -1,11 +1,15 @@
 plugins {
     kotlin("jvm")
-    `maven-publish`
     kotlin("plugin.serialization") version "2.2.0"
     id("com.vanniktech.maven.publish")
 }
-val moduleVersion: String = rootProject.file("${project.name}/version.txt").readText().trim()
 
+mavenPublishing {
+    pom {
+        name.set("ktwinx-core")
+        description.set("Core module of the KTwinX framework for human digital twins")
+    }
+}
 
 repositories {
     mavenCentral()
